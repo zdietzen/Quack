@@ -1,0 +1,13 @@
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Quack.Tests.dll.config
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Quack.Tests.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Quack.Tests.pdb
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\EntityFramework.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Quack.Core.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Quack.Core.pdb
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\EntityFramework.xml
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\obj\Debug\Quack.Tests.csprojResolveAssemblyReference.cache
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\obj\Debug\Quack.Tests.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\obj\Debug\Quack.Tests.pdb
