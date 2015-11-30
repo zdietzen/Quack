@@ -8,3 +8,5 @@ C:\Dev\GitHub\Quack\Quack\Quack.Core\bin\Debug\EntityFramework.SqlServer.xml
 C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.csprojResolveAssemblyReference.cache
 C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.dll
 C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.pdb
+C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.Migrations.InitialCreate.resources
+C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.csproj.GenerateResource.Cache

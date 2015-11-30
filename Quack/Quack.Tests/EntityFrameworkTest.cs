@@ -13,9 +13,9 @@ namespace Quack.Tests
         {
             using (var db = new QuackDbContext())
             {
-                var firstUser = db.Users.FirstOrDefault();
+                var firstTeacher = db.Teachers.FirstOrDefault();
 
-                Assert.IsNull(firstUser);
+                Assert.IsNull(firstTeacher);
             }
         }
     }
