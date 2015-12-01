@@ -9,7 +9,7 @@
 
         public string Title { get; set; }
         public string Description { get; set;  }
-        public int Likes { get; set; }
+        public bool Likes { get; set; }
         public string URL { get; set; }
 
         public virtual MediaType MediaType { get; set; } 

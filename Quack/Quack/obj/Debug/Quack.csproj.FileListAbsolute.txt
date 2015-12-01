@@ -26,3 +26,11 @@ C:\Dev\GitHub\Quack\Quack\Quack\bin\System.Web.Http.WebHost.xml
 C:\Dev\GitHub\Quack\Quack\Quack\obj\Debug\Quack.csprojResolveAssemblyReference.cache
 C:\Dev\GitHub\Quack\Quack\Quack\obj\Debug\Quack.dll
 C:\Dev\GitHub\Quack\Quack\Quack\obj\Debug\Quack.pdb
+C:\Dev\GitHub\Quack\Quack\Quack\bin\AutoMapper.dll
+C:\Dev\GitHub\Quack\Quack\Quack\bin\AutoMapper.xml
+C:\Dev\GitHub\Quack\Quack\Quack\bin\EntityFramework.dll
+C:\Dev\GitHub\Quack\Quack\Quack\bin\EntityFramework.SqlServer.dll
+C:\Dev\GitHub\Quack\Quack\Quack\bin\Quack.Core.dll
+C:\Dev\GitHub\Quack\Quack\Quack\bin\Quack.Core.pdb
+C:\Dev\GitHub\Quack\Quack\Quack\bin\EntityFramework.xml
+C:\Dev\GitHub\Quack\Quack\Quack\bin\EntityFramework.SqlServer.xml

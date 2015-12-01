@@ -61,6 +61,12 @@
       <DependentUpon>201511302339145_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BookmarkModel.cs" />
+    <Compile Include="Models\CohortModel.cs" />
+    <Compile Include="Models\MediaTypeModel.cs" />
+    <Compile Include="Models\StudentModel.cs" />
+    <Compile Include="Models\TeacherCohortModel.cs" />
+    <Compile Include="Models\TeacherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
