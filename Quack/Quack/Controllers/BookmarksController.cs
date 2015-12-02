@@ -9,6 +9,7 @@ using Quack.Core.Infrastructure;
 using System.Collections.Generic;
 using Quack.Core.Models;
 using AutoMapper;
+using System;
 
 namespace Quack.Controllers
 {
@@ -16,13 +17,13 @@ namespace Quack.Controllers
     {
         private QuackDbContext db = new QuackDbContext();
 
-        // GET: api/Bookmarks
+        // GET: api/Bookmarks || Controller Method [0]
         public IEnumerable<BookmarkModel> GetBookmarks()
         {
             return Mapper.Map<IEnumerable<BookmarkModel>>(db.Bookmarks);
         }
 
-        // GET: api/Bookmarks/5
+        // GET: api/Bookmarks/5 || Get By ID [1]
         [ResponseType(typeof(BookmarkModel))]
         public IHttpActionResult GetBookmark(int id)
         {
@@ -35,10 +36,10 @@ namespace Quack.Controllers
 
             return Ok(bookmark);
         }
-        //THIS IS WHERE I LEFT OFF
-        // PUT: api/Bookmarks/5
+
+        // PUT: api/Bookmarks/5 || Update Bookmarks [2]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutBookmark(int id, Bookmark bookmark)
+        public IHttpActionResult PutBookmark(int id, BookmarkModel bookmark)
         {
             if (!ModelState.IsValid)
             {
@@ -49,8 +50,11 @@ namespace Quack.Controllers
             {
                 return BadRequest();
             }
+            var dbBookmark = db.Bookmarks.Find(id);
 
-            db.Entry(bookmark).State = EntityState.Modified;
+            dbBookmark.Update(bookmark);
+
+            db.Entry(dbBookmark).State = EntityState.Modified;
 
             try
             {
@@ -64,30 +68,40 @@ namespace Quack.Controllers
                 }
                 else
                 {
-                    throw;
+                    throw new Exception("Unable to update the bookmark in the database");
                 }
             }
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Bookmarks
-        [ResponseType(typeof(Bookmark))]
-        public IHttpActionResult PostBookmark(Bookmark bookmark)
+        // POST: api/Bookmarks || New Bookmarks [3]
+        [ResponseType(typeof(BookmarkModel))]
+        public IHttpActionResult PostBookmark(BookmarkModel bookmark)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var dbBookmark = new Bookmark();
 
-            db.Bookmarks.Add(bookmark);
-            db.SaveChanges();
+            dbBookmark.Update(bookmark);
+            db.Bookmarks.Add(dbBookmark);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unable to add the bookmark to the database.");
+            }
+            bookmark.BookmarkId = dbBookmark.BookmarkId;
 
             return CreatedAtRoute("DefaultApi", new { id = bookmark.BookmarkId }, bookmark);
         }
 
-        // DELETE: api/Bookmarks/5
-        [ResponseType(typeof(Bookmark))]
+        // DELETE: api/Bookmarks/5 || Delete Bookmarks [4]
+        [ResponseType(typeof(BookmarkModel))]
         public IHttpActionResult DeleteBookmark(int id)
         {
             Bookmark bookmark = db.Bookmarks.Find(id);
@@ -97,9 +111,17 @@ namespace Quack.Controllers
             }
 
             db.Bookmarks.Remove(bookmark);
-            db.SaveChanges();
 
-            return Ok(bookmark);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Unable to delete the bookmark from the database.");
+            }
+
+            return Ok(Mapper.Map<BookmarkModel>(bookmark));
         }
 
         protected override void Dispose(bool disposing)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Quack.Core.Models;
+using System.Collections.Generic;
 
 namespace Quack.Core.Domain
 {
@@ -12,5 +13,11 @@ namespace Quack.Core.Domain
 
         public virtual ICollection<TeacherCohort> TeacherCohorts { get; set; }
 
+        public void Update(TeacherModel teacher)
+        {
+            FirstName = teacher.FirstName;
+            LastName = teacher.LastName;
+            Email = teacher.Email;
+        }
     }
 }

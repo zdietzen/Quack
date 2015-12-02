@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Quack.Core.Models;
+using System.Collections.Generic;
 
 namespace Quack.Core.Domain
 {
@@ -10,6 +11,10 @@ namespace Quack.Core.Domain
         public string Type { get; set; }
 
         public ICollection<Bookmark> Bookmarks { get; set; }
-     
+
+        public void Update(MediaTypeModel mediatype)
+        {
+            Type = mediatype.Type;
+        }
     }
 }

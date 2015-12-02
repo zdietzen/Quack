@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quack.Core.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Quack.Core.Domain
@@ -17,5 +18,13 @@ namespace Quack.Core.Domain
         
         public virtual Cohort Cohort { get; set; }
         public ICollection<Bookmark> Bookmarks { get; set; }
+
+        public void Update(StudentModel student)
+        {
+            FirstName = student.FirstName;
+            LastName = student.LastName;
+            Email = student.Email;
+            Approved = student.Approved;
+        }
     }
 }
