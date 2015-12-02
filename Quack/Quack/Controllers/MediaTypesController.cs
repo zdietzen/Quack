@@ -118,7 +118,7 @@ namespace Quack.Controllers
             }
             catch
             {
-                throw new Exception("Unable to delete the mediatype from database")
+                throw new Exception("Unable to delete the mediatype from database");
             }
             return Ok(mediaType);
         }
