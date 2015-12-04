@@ -7,7 +7,7 @@ namespace Quack.Core.Domain
     {
         public int BookmarkId { get; set; }
 
-        public int StudentId { get; set; }  
+        public string QuackUserId { get; set; }  
         public int MediaTypeId { get; set; } 
 
         public string Title { get; set; }
@@ -17,7 +17,7 @@ namespace Quack.Core.Domain
         public DateTime CreatedDate { get; set; }
 
         public virtual MediaType MediaType { get; set; } 
-        public virtual Student Student { get; set; }
+        public virtual QuackUser Student { get; set; }
 
         public void Update(BookmarkModel bookmark)
         {

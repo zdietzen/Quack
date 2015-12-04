@@ -20,14 +20,22 @@ namespace Quack.Controllers
         // GET: api/Students || Controller Method [0]
         public IEnumerable<StudentModel> GetStudents()
         {
-            return Mapper.Map<IEnumerable<StudentModel>>(db.Students);
+            var role = db.Roles.FirstOrDefault(r => r.Name == "Student");
+
+            if(role == null)
+            {
+                role = db.Roles.Add(new Microsoft.AspNet.Identity.EntityFramework.IdentityRole { Name = "Student" });
+                db.SaveChanges();
+            }
+
+            return Mapper.Map<IEnumerable<StudentModel>>(db.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id)));
         }
 
         // GET: api/Students/5 || Get By ID [1]
         [ResponseType(typeof(StudentModel))]
         public IHttpActionResult GetStudent(int id)
         {
-            Student dbStudent = db.Students.Find(id);
+            QuackUser dbStudent = db.Users.Find(id);
             if (dbStudent == null)
             {
                 return NotFound();
@@ -39,18 +47,18 @@ namespace Quack.Controllers
 
         // PUT: api/Students/5 || Update Bookmarks [2]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutStudent(int id, StudentModel student)
+        public IHttpActionResult PutStudent(string id, StudentModel student)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != student.StudentId)
+            if (id != student.Id)
             {
                 return BadRequest();
             }
-            var dbStudent = db.Students.Find(id);
+            var dbStudent = db.Users.Find(id);
 
             dbStudent.Update(student);
 
@@ -83,10 +91,13 @@ namespace Quack.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var dbStudent = new Student();
+            var dbStudent = new QuackUser();
 
             dbStudent.Update(student);
-            db.Students.Add(dbStudent);
+
+            db.AddUserToRole(dbStudent, "Student");
+
+            db.Users.Add(dbStudent);
             try
             {
                 db.SaveChanges();
@@ -95,22 +106,22 @@ namespace Quack.Controllers
             {
                 throw new Exception("Unable to add the student to the database.");
             }
-            student.StudentId = dbStudent.StudentId;
+            student.Id = dbStudent.Id;
 
-            return CreatedAtRoute("DefaultApi", new { id = student.StudentId }, student);
+            return CreatedAtRoute("DefaultApi", new { id = student.Id }, student);
         }
 
         // DELETE: api/Students/5 || Delete Bookmarks [4]
         [ResponseType(typeof(StudentModel))]
         public IHttpActionResult DeleteStudent(int id)
         {
-            Student student = db.Students.Find(id);
+            QuackUser student = db.Users.Find(id);
             if (student == null)
             {
                 return NotFound();
             }
 
-            db.Students.Remove(student);
+            db.Users.Remove(student);
             try
             {
                 db.SaveChanges();
@@ -132,9 +143,9 @@ namespace Quack.Controllers
             base.Dispose(disposing);
         }
 
-        private bool StudentExists(int id)
+        private bool StudentExists(string id)
         {
-            return db.Students.Count(e => e.StudentId == id) > 0;
+            return db.Users.Count(e => e.Id == id) > 0;
         }
     }
 }

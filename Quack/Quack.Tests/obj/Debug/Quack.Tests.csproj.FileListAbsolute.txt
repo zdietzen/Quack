@@ -11,3 +11,7 @@ C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\EntityFramework.SqlServer.xml
 C:\Dev\GitHub\Quack\Quack\Quack.Tests\obj\Debug\Quack.Tests.csprojResolveAssemblyReference.cache
 C:\Dev\GitHub\Quack\Quack\Quack.Tests\obj\Debug\Quack.Tests.dll
 C:\Dev\GitHub\Quack\Quack\Quack.Tests\obj\Debug\Quack.Tests.pdb
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Dev\GitHub\Quack\Quack\Quack.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

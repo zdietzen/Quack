@@ -29,8 +29,8 @@ namespace Quack
             Mapper.CreateMap<Bookmark, BookmarkModel>();
             Mapper.CreateMap<Cohort, CohortModel>();
             Mapper.CreateMap<MediaType, MediaTypeModel>();
-            Mapper.CreateMap<Student, StudentModel>();
-            Mapper.CreateMap<Teacher, TeacherModel>();
+            Mapper.CreateMap<QuackUser, StudentModel>();
+            Mapper.CreateMap<QuackUser, TeacherModel>();
             Mapper.CreateMap<TeacherCohort, TeacherCohortModel>();
         }
     }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Quack.Core.Models
+﻿namespace Quack.Core.Models
 {
     public class TeacherCohortModel
     {

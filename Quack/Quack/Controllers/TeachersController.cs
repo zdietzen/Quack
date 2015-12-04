@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Quack.Core.Domain;
@@ -22,14 +20,15 @@ namespace Quack.Controllers
         // GET: api/Teachers || Controller Method [0]
         public IEnumerable<TeacherModel> GetTeachers()
         {
-            return Mapper.Map<IEnumerable<TeacherModel>>(db.Teachers);
+            return Mapper.Map<IEnumerable<TeacherModel>>(db.Users);
         }
 
         // GET: api/Teachers/5 || Get By ID [1]
         [ResponseType(typeof(TeacherModel))]
-        public IHttpActionResult GetTeacher(int id)
+        public IHttpActionResult GetTeacher(string id)
         {
-            Teacher dbTeacher = db.Teachers.Find(id);
+            QuackUser dbTeacher = db.Teachers.FirstOrDefault(t => t.Id == id);
+
             if (dbTeacher == null)
             {
                 return NotFound();
@@ -41,18 +40,19 @@ namespace Quack.Controllers
 
         // PUT: api/Teachers/5 || Update Bookmarks [2]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTeacher(int id, TeacherModel teacher)
+        public IHttpActionResult PutTeacher(string id, TeacherModel teacher)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != teacher.TeacherId)
+            if (id != teacher.Id)
             {
                 return BadRequest();
             }
-            var dbTeacher = db.Teachers.Find(id);
+
+            var dbTeacher = db.Teachers.FirstOrDefault(t => t.Id == id);
             dbTeacher.Update(teacher);
 
             db.Entry(dbTeacher).State = EntityState.Modified;
@@ -84,10 +84,10 @@ namespace Quack.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var dbTeacher = new Teacher();
+            var dbTeacher = new QuackUser();
 
             dbTeacher.Update(teacher);
-            db.Teachers.Add(dbTeacher);
+            db.Users.Add(dbTeacher);
             try
             {
                 db.SaveChanges();
@@ -96,22 +96,22 @@ namespace Quack.Controllers
             {
                 throw new Exception("Unable to add teacher to the database");
             }
-            teacher.TeacherId = dbTeacher.TeacherId;
+            teacher.Id = dbTeacher.Id;
 
-            return CreatedAtRoute("DefaultApi", new { id = teacher.TeacherId }, teacher);
+            return CreatedAtRoute("DefaultApi", new { id = teacher.Id }, teacher);
         }
 
         // DELETE: api/Teachers/5 || Delete Bookmarks [4]
         [ResponseType(typeof(TeacherModel))]
-        public IHttpActionResult DeleteTeacher(int id)
+        public IHttpActionResult DeleteTeacher(string id)
         {
-            Teacher teacher = db.Teachers.Find(id);
-            if (teacher == null)
+            QuackUser dbTeacher = db.Teachers.FirstOrDefault(t => t.Id == id);
+            if (dbTeacher == null)
             {
                 return NotFound();
             }
 
-            db.Teachers.Remove(teacher);
+            db.Users.Remove(dbTeacher);
 
             try
             {
@@ -122,7 +122,7 @@ namespace Quack.Controllers
                 throw new Exception("Unable to delete teacher from the database.");
             }
          
-            return Ok(Mapper.Map<TeacherModel>(teacher));
+            return Ok(Mapper.Map<TeacherModel>(dbTeacher));
         }
 
         protected override void Dispose(bool disposing)
@@ -134,9 +134,9 @@ namespace Quack.Controllers
             base.Dispose(disposing);
         }
 
-        private bool TeacherExists(int id)
+        private bool TeacherExists(string id)
         {
-            return db.Teachers.Count(e => e.TeacherId == id) > 0;
+            return db.Users.Count(e => e.Id == id) > 0;
         }
     }
 }

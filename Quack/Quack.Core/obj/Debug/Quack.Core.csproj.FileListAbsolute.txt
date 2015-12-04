@@ -8,5 +8,9 @@ C:\Dev\GitHub\Quack\Quack\Quack.Core\bin\Debug\EntityFramework.SqlServer.xml
 C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.csprojResolveAssemblyReference.cache
 C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.dll
 C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.pdb
-C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.Migrations.InitialCreate.resources
+C:\Dev\GitHub\Quack\Quack\Quack.Core\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Dev\GitHub\Quack\Quack\Quack.Core\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Dev\GitHub\Quack\Quack\Quack.Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.Migrations.initialcreate.resources
 C:\Dev\GitHub\Quack\Quack\Quack.Core\obj\Debug\Quack.Core.csproj.GenerateResource.Cache

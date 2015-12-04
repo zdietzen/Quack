@@ -12,7 +12,7 @@ namespace Quack.Core.Domain
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<QuackUser> Students { get; set; }
         public virtual ICollection<TeacherCohort> TeacherCohorts { get; set; }
 
         public void Update(CohortModel cohort)
