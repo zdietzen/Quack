@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="374089372061-i9ptpi7tu6lfcir3jdhki709afei4g7b.apps.googleusercontent.com">
+
+    <title>Quack</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Custom Fonts CSS -->
+    <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+    <!--Custom CSS-->
+    <link href="css/google-plus-signin.css" rel="stylesheet"/>
+</head>
+
+
+    <body ng-controller="siteController">
+        <div class="container bg-primary">
+            <div class="jumbotron text-center">
+                <!--Logo/text needs to be added here-->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div ui-view></div>
+                </div><!--col-->
+            </div> <!--row -->
+        </div><!--container-->
+        
+        <!-- jQuery -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <!-- bower -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <!--Scripts-->
+        <script src="js/app.js"></script>
+        <script src="js/directives/google-plus-signin.js"></script>
+
+        <script src="js/authentication/auth.service.js"></script>
+        <script src="js/authentication/authInterceptor.service.js"></script>
+        <script src="js/authentication/login.ctrl.js"></script>
+    </body>
+
+</html>

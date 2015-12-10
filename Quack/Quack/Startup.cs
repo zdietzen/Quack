@@ -4,7 +4,6 @@ using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Quack.Core.Infrastructure;
 using Quack.Infrastructure;
 using System.Web.Http;
 

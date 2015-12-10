@@ -1,7 +1,7 @@
 ﻿{
   "browser_action": {
     "default_icon": "img/xsQuackLogo.png",
-    "default_popup": "popup.html"
+    "default_popup": "index.html"
   },
   "description": "Quack to your classmates all the articles, videos, blogs, or learning material you find helpful. Get all your ducks in a row and start learning together, one Quack at a time!",
   "manifest_version": 2,

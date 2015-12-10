@@ -1,0 +1,35 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title text-center">Student Dashboard</h3>
+    </div>
+    <div class="panel-body text-center">
+        <table class="table table-bordered table-condensed table-responsive table-striped table-hover" ng-show="bookmarks.length">
+            <thead class="table-header">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="bookmark in bookmarks">
+                    <td>{{bookmarks.Title}}</td>
+                    <td>{{bookmarks.Description}}</td>
+                    <td>{{bookmarks.Type}}</td>
+                    <td>
+                        <a class="btn btn-default btn-sm" ui-href=""> 
+                            <i class="fa fa- fa-location-arrow"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </br>
+
+        <a class="btn btn-warning btn-lg" ui-sref="student.addQuack">
+            <i class="fa fa-qq"></i>
+        </a>
+
+    </div>
+</div>
