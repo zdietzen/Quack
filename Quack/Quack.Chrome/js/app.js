@@ -1,7 +1,7 @@
-﻿angular.module('app', ['googleSignIn', 'ngResource', 'ui.router'])
-                .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
+﻿angular.module('app', ['directive.g+signin', 'ngResource', 'ui.router', 'LocalStorageModule'])
+                .config(function ($stateProvider, $urlRouterProvider) {
 
-                    httpProvider.interceptors.push('authInterceptorService');
+                   
 
                     $urlRouterProvider.otherwise('/login');
 
@@ -23,7 +23,7 @@
 
                 });
 //API link
-angular.module('app').value('apiUrl', 'http://localhost:3000/');
+angular.module('app').value('apiUrl', 'http://localhost:3200/');
 
 // Load authentication data
 angular.module('app').run(function ($rootScope, authService, $state) {

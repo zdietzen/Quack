@@ -29,8 +29,8 @@ namespace Quack
 
             googleAuthOptions = new GoogleOAuth2AuthenticationOptions
             {
-                ClientId = "374089372061-i9ptpi7tu6lfcir3jdhki709afei4g7b.apps.googleusercontent.com",
-                ClientSecret = "HXda5rlmGU3eq1_X2w8rQ3Oi",
+                ClientId = "374089372061-g28ovvr2b4pps4gurf9aluohu3727c0b.apps.googleusercontent.com",
+                ClientSecret = "qCxXtsiixm6UCfjKnunKstjV",
                 Provider = new GoogleAuthProvider()
             };
             app.UseGoogleAuthentication(googleAuthOptions);
