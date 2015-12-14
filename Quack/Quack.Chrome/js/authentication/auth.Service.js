@@ -63,13 +63,47 @@
             _authentication.isAuthorized = authData.isAuthorized;
             _authentication.userName = authData.userName;
         }
-    }
+    };
+
+    var _registerExternalUser = function (provider, access_token, username) {
+        var deferred = $q.defer();
+
+        $http.post(apiUrl + '/RegisterExternal', {
+            UserName: username,
+            Provider: provider,
+            ExternalAccessToken: access_token
+        }).then(function (response) {
+            deferred.resolve(response.data);
+        }, function (error) {
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+    };
+
+    var _getUserInfoFromGoogle = function (external_access_token) {
+        var deferred = $q.defer();
+
+        $http.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+            headers: {
+                'Authorization': 'Bearer ' + external_access_token
+            }
+        }).then(function(response) {
+            deferred.resolve(response.data);
+        }, function(error) {
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+    };
 
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.loadAuthData = _loadAuthData;
     authServiceFactory.authentication = _authentication;
+    authServiceFactory.registerExternalUser = _registerExternalUser;
+    authServiceFactory.getUserInfoFromGoogle = _getUserInfoFromGoogle; 
 
     return authServiceFactory;
 });

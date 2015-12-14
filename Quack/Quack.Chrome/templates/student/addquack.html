@@ -1,1 +1,33 @@
-﻿
+﻿<div class="panel panel-default" ng-app="app">
+    <div class="panel-heading">
+        <h3 class="panel-title text-center">Add Quack</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="form-group">
+                    <label class="control-label" for="bookmarkTitle">Title</label>
+                    <input type="text" class="form-control" id="bookmarkTitle"
+                           placeholder="Title" ng-model="bookmark.Title">
+                </div><!-- end form group -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="form-group">
+                    <label for="bookmarkDiscription">Discription:</label>
+                    <textarea class="form-control" rows="6" id="bookmarkDiscription"
+                              placeholder="Discription" ng-model="bookmark.Discription"></textarea>
+                </div><!-- end form group -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="form-group">
+                    <label class="control-label" for="bookmarkURL">URL</label>
+                    <input type="text" class="form-control" id="bookmarkURL"
+                           placeholder="URL" ng-model="bookmark.URL">
+                </div><!-- end form group -->
+            </div>
+        </div>
+    </div>

@@ -18,7 +18,7 @@
             .state('teacher.addTeacher', { url: '/addTeacher', templateUrl: '/templates/teacher/addteacher.html', controller: 'AddTeacherController', authenticate: false })
             
         .state('studentDashboard', { url: '/student', templateUrl: '/templates/student/dashboard.html', controller: 'StudentDashboardController' })
-            .state('student.addQuack', { url: '/addquack', templateUrl: '/templates/student/addquack.html', controller: 'PostsController', authenticate: false })
+            .state('student.addQuack', { url: '/addquack', templateUrl: '/templates/student/addquack.html', controller: 'AddQuackController', authenticate: false })
             
 
                 });

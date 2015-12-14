@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
@@ -33,6 +35,60 @@ namespace Quack.Controllers
         public AccountController()
         {
             _repo = new AuthRepository();
+        }
+
+        [AllowAnonymous]
+        [Route("RegisterExternal")]
+        public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var verifiedAccessToken = await VerifyExternalAccessToken(model.Provider, model.ExternalAccessToken);
+            if(verifiedAccessToken == null)
+            {
+                return BadRequest("Invalid Provider or External Access Token");
+            }
+
+            QuackUser user = await _repo.FindAsync(new UserLoginInfo(model.Provider, verifiedAccessToken.user_id));
+
+            bool hasRegistered = user != null;
+
+            if(hasRegistered)
+            {
+                return BadRequest("External user is already registered");
+            }
+
+            user = new QuackUser
+            {
+                UserName = model.UserName
+            };
+
+            IdentityResult result = await _repo.CreateAsync(user);
+
+            if(!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            var info = new ExternalLoginInfo
+            {
+                DefaultUserName = model.UserName,
+                Login = new UserLoginInfo(model.Provider, verifiedAccessToken.user_id)
+            };
+
+            result = await _repo.AddLoginAsync(user.Id, info.Login);
+            if(!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            //generate access token response
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(model.UserName);
+
+            return Ok(accessTokenResponse);
         }
 
         [OverrideAuthentication]

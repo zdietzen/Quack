@@ -1,4 +1,4 @@
-﻿<div class="panel panel-primary">
+﻿<div class="panel panel-default" ng-app="app">
     <div class="panel-heading">
         <h3 class="panel-title text-center">Student Dashboard</h3>
     </div>
@@ -18,17 +18,18 @@
                     <td>{{bookmarks.Description}}</td>
                     <td>{{bookmarks.Type}}</td>
                     <td>
-                        <a class="btn btn-default btn-sm" ui-href=""> 
-                            <i class="fa fa- fa-location-arrow"></i>
-                        </a>
-                    </td>
+                        <div class="clearfix">
+                            <a class="btn btn-primary btn-sm pull-right" ui-sref="">
+                                <i class="fa fa-location-arrow"> View</i>
+                            </a>
+                        </div>
                 </tr>
             </tbody>
         </table>
         </br>
 
         <a class="btn btn-warning btn-lg" ui-sref="student.addQuack">
-            <i class="fa fa-qq"></i>
+            <i class="fa fa-qq"> Quack</i>
         </a>
 
     </div>
